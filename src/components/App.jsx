@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import c from "./../constants";
+import Home from "./Home";
 
 class App extends React.Component {
   render() {
@@ -14,20 +15,7 @@ class App extends React.Component {
           }
         `}</style>
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <TicketList ticketList={this.props.masterTicketList} />
-            )}
-          />
-          <Route path="/newticket" component={NewTicketControl} />
-          <Route
-            path="/admin"
-            render={props => (
-              <Admin currentRouterPath={props.location.pathname} />
-            )}
-          />
+          <Route exact path="/" component={Home} />
           <Route component={Error404} />
         </Switch>
       </div>
