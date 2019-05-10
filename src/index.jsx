@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 import { AppContainer } from "react-hot-loader";
 import { createStore } from "redux";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import ticTacReducer from "./reducers/ticTacReducer";
 
@@ -12,11 +13,11 @@ let unsubscribe = store.subscribe(() => console.log(store.getState()));
 
 const render = Component => {
   ReactDOM.render(
-    <AppContainer>
+    <HashRouter>
       <Provider store={store}>
         <Component />
       </Provider>
-    </AppContainer>,
+    </HashRouter>,
 
     document.getElementById("react-app-root")
   );

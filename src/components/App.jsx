@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import c from "./../constants";
 import Home from "./Home";
+import Error404 from "./Error404";
 
 class App extends React.Component {
   render() {
