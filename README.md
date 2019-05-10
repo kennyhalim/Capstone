@@ -1,12 +1,12 @@
 # _Capstone Project_
 
-#### _A web application of a clone of an Angular project using React._
+#### _Individual final capstone project for Epicodus._
 
 #### By _**Kenny Halim**_
 
 ## Description
 
-_A web application that allows user to see different lists of kegs and be able to edit and add new keg. This is quite different from the angular project since we have only used functional programming and have not make any object yet for React._
+_An _
 
 ## Planning
 
