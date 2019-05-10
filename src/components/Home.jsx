@@ -6,18 +6,13 @@ export default function Home() {
       <style jsx>{`
         #asd {
           height: 90vh;
-        }
-        #test {
-          height: 100vh;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
         }
       `}</style>
       <Navbar />
-      <div id="asd">
-        <a href="#test">asdad</a>
-      </div>
-      <div id="test">
-        <a href="#home">asdasdsdasgasd</a>
-      </div>
+      <div id="asd">Enter site</div>
     </div>
   );
 }
