@@ -14,6 +14,7 @@ class App extends React.Component {
           body {
             font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
               "Helvetica Neue", sans-serif;
+            margin: 0;
           }
         `}</style>
         <Switch>

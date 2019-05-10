@@ -5,18 +5,33 @@ export default function Navbar() {
     <div>
       <style jsx>{`
         .navbar {
-          height: 10vh;
-          width: 100vw;
           background: lightblue;
+          height: 10vh;
+          padding: 10px;
+          display: flex;
+          align-items: center;
+        }
+        .rightSide {
+        }
+        .child {
+          display: inline-block;
+          margin: 20px;
         }
       `}</style>
       <div className="navbar">
-        <div className="logo">Test</div>
         <div className="rightSide">
-          <div>Home</div>
-          <div>Browse</div>
-          <div>About Us</div>
-          <div>Cart</div>
+          <div className="child">
+            <p>Home</p>
+          </div>
+          <div className="child">
+            <p>Browse</p>
+          </div>
+          <div className="child">
+            <p>About Us</p>
+          </div>
+          <div className="child">
+            <p>Cart</p>
+          </div>
         </div>
       </div>
     </div>
