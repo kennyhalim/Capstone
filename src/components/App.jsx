@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import c from "./../constants";
 import Home from "./Home";
@@ -41,4 +41,4 @@ App.propTypes = {
   turn: PropTypes.bool
 };
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));
