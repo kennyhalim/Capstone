@@ -10,9 +10,19 @@ export default function Home() {
           justify-content: space-around;
           align-items: center;
         }
+
+        .shop {
+          height: 60px;
+          width: 140px;
+          background: lightcoral;
+          border-radius: 5px;
+          font-size: 20px;
+        }
       `}</style>
       <Navbar />
-      <div id="asd">Enter site</div>
+      <div id="asd">
+        <button className="shop">Shop Now!</button>
+      </div>
     </div>
   );
 }
