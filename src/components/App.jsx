@@ -9,33 +9,27 @@ class App extends React.Component {
       <div>
         <style jsx global>{`
           body {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
+            font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+              "Helvetica Neue", sans-serif;
           }
         `}</style>
-        <style jsx>
-          {`
-            table,
-            td {
-              border: 1px solid black;
-            }
-
-            table {
-              border-collapse: collapse;
-              height: 90vh;
-              width: 90vw;
-            }
-
-            td {
-              height: 300px;
-              width: 300px;
-              font-size: 24px;
-              text-align: center;
-            }
-          `}
-        </style>
-        asdasd
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <TicketList ticketList={this.props.masterTicketList} />
+            )}
+          />
+          <Route path="/newticket" component={NewTicketControl} />
+          <Route
+            path="/admin"
+            render={props => (
+              <Admin currentRouterPath={props.location.pathname} />
+            )}
+          />
+          <Route component={Error404} />
+        </Switch>
       </div>
     );
   }
