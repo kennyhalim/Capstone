@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -36,6 +37,7 @@ export default function Navbar() {
         .child p {
           border-bottom: 2px solid transparent;
           padding-bottom: 10px;
+          color: black;
         }
         .child p:hover {
           border-bottom: 2px solid black;
@@ -46,18 +48,26 @@ export default function Navbar() {
       <div className="navbar">
         <div className="logo">asd</div>
         <div className="rightSide">
-          <div className="child">
-            <p>Home</p>
-          </div>
-          <div className="child">
-            <p>Browse</p>
-          </div>
-          <div className="child">
-            <p>About Us</p>
-          </div>
-          <div className="child">
-            <p>Cart</p>
-          </div>
+          <Link to="/">
+            <div className="child">
+              <p>Home</p>
+            </div>
+          </Link>
+          <Link to="/browse">
+            <div className="child">
+              <p>Browse</p>
+            </div>
+          </Link>
+          <Link to="/aboutus">
+            <div className="child">
+              <p>About Us</p>
+            </div>
+          </Link>
+          <Link to="/cart">
+            <div className="child">
+              <p>Cart</p>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

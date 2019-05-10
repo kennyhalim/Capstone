@@ -1,13 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import Navbar from "./Navbar";
-
-export default class Home extends Component {
-  render() {
-    return (
-      <div>
-        <style jsx>{``}</style>
-        <Navbar />
-      </div>
-    );
-  }
+export default function Home() {
+  return (
+    <div>
+      <style jsx>{``}</style>
+      <Navbar />
+      asdasda
+    </div>
+  );
 }
