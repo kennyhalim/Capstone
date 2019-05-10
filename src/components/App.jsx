@@ -16,6 +16,9 @@ class App extends React.Component {
               "Helvetica Neue", sans-serif;
             margin: 0;
           }
+          html {
+            scroll-behavior: smooth;
+          }
         `}</style>
         <Switch>
           <Route exact path="/" component={Home} />
