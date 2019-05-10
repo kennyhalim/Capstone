@@ -6,7 +6,7 @@
 
 ## Description
 
-_An _
+_An online marketplace that will allow user to browse through the available products in the store. The product will be separated into several categories. User will also be able to add items to their cart, see the total of their items, and order the item. User will then finally be able to login as well._
 
 ## Planning
 
