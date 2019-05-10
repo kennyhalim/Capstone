@@ -10,12 +10,7 @@ _An online marketplace that will allow user to browse through the available prod
 
 ## Planning
 
-_<img src="flowchart.png">_
-
-## README Prompts
-
-1. Just had issues with styling with the Link tag. Resolve issue not being able to remove underline text decoration.
-2. Development process was pretty straightforward, no issues at all.
+_<img src="planning.png">_
 
 ## Setup/Installation Requirements
 
@@ -35,6 +30,7 @@ _If you run into any issues or have questions, ideas or concerns. Please contact
 - CSS
 - Javascript
 - React
+- Redux
 - WebPack
 - Node Package Manager
 
