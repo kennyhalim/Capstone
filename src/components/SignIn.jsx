@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -22,9 +23,9 @@ export default class SignIn extends Component {
               border: 1px solid #515151;
               background-color: white;
               width: 400px;
-              height: 450px;
+              height: 380px;
               border-radius: 5px;
-              margin-top: 5%;
+              margin-top: 7%;
               padding: 25px 25px 0px 25px;
             }
 
@@ -100,6 +101,9 @@ export default class SignIn extends Component {
                 this._password = input;
               }}
             />
+            <p>
+              Don't have an account? <Link to="/signup">Sign up!</Link>
+            </p>
             <div className="btnContainer">
               <button className="submitBtn" type="submit">
                 Log in
