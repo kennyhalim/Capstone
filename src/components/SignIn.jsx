@@ -37,7 +37,10 @@ export default class SignIn extends Component {
               font-weight: bold;
             }
 
-            .name {
+            .alignCenter {
+              text-align: center;
+            }
+            .input {
               height: 48px;
               width: 377px;
               font-size: 18px;
@@ -69,35 +72,37 @@ export default class SignIn extends Component {
         <Navbar />
         <div className="center">
           <form className="bookingForm">
-            <h1>Add a new Keg</h1>
-            <label>NAME: </label>
+            <div className="alignCenter">
+              <h1>Login</h1>
+            </div>
+            <label>Email </label>
             <br />
             <input
-              className="name"
-              id="name"
-              type="text"
-              placeholder="Name"
+              className="input"
+              id="email"
+              type="email"
+              placeholder="Email"
               required
               ref={input => {
-                this._kegName = input;
+                this._email = input;
               }}
             />
             <br />
             <br />
-            <label>BRAND: </label>
+            <label>Password</label>
             <br />
             <input
-              className="name"
-              type="text"
-              placeholder="Brand"
+              className="input"
+              type="password"
+              placeholder="Password"
               required
               ref={input => {
-                this._kegBrand = input;
+                this._password = input;
               }}
             />
             <div className="btnContainer">
               <button className="submitBtn" type="submit">
-                Add
+                Log in
               </button>
             </div>
           </form>
