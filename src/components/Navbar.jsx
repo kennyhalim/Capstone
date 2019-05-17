@@ -63,6 +63,11 @@ export default function Navbar() {
               <p>About Us</p>
             </div>
           </Link>
+          <Link to="/signin">
+            <div className="child">
+              <p>Sign in</p>
+            </div>
+          </Link>
           <Link to="/cart">
             <div className="child">
               <p>Cart</p>
