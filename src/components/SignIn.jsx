@@ -1,15 +1,35 @@
-import React, { Component } from "react";
-import Navbar from "./Navbar";
+import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import Navbar from "./Navbar";
+import constants from "./../constants";
+const { c } = constants;
+import * as actions from "./../actions";
+const { signIn } = actions;
 
-export default class SignIn extends Component {
+class SignIn extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      redirect: false
+      email: "",
+      password: ""
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.signIn(this.state);
+  }
+
   render() {
     return (
       <div>
@@ -72,7 +92,7 @@ export default class SignIn extends Component {
         </style>
         <Navbar />
         <div className="center">
-          <form className="bookingForm">
+          <form className="bookingForm" onSubmit={this.handleSubmit}>
             <div className="alignCenter">
               <h1>Login</h1>
             </div>
@@ -84,9 +104,7 @@ export default class SignIn extends Component {
               type="email"
               placeholder="Email"
               required
-              ref={input => {
-                this._email = input;
-              }}
+              onChange={this.handleChange}
             />
             <br />
             <br />
@@ -94,12 +112,11 @@ export default class SignIn extends Component {
             <br />
             <input
               className="input"
+              id="password"
               type="password"
               placeholder="Password"
               required
-              ref={input => {
-                this._password = input;
-              }}
+              onChange={this.handleChange}
             />
             <p>
               Don't have an account? <Link to="/signup">Sign up!</Link>
@@ -108,6 +125,7 @@ export default class SignIn extends Component {
               <button className="submitBtn" type="submit">
                 Log in
               </button>
+              {this.props.authError ? <p>{this.props.authError}</p> : null}
             </div>
           </form>
         </div>
@@ -115,3 +133,23 @@ export default class SignIn extends Component {
     );
   }
 }
+
+SignIn.propTypes = {
+  authError: PropTypes.object
+};
+
+const mapStateToProps = state => {
+  return {
+    authError: state.auth.authError
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: creds => dispatch(signIn(creds))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignIn);

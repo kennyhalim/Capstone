@@ -35,15 +35,9 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    ticTacArray: state.board,
-    turn: state.turn
-  };
+  return {};
 };
 
-App.propTypes = {
-  ticTacArray: PropTypes.array,
-  turn: PropTypes.bool
-};
+App.propTypes = {};
 
 export default withRouter(connect(mapStateToProps)(App));

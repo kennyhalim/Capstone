@@ -6,20 +6,21 @@
   "scripts": {
     "lint": "eslint src/** src/**/**; exit 0",
     "lint-fix": "eslint src/** src/**/** --fix; exit 0",
-    "test": "jest --watchAll",
+    "test": "jest; exit 0",
     "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kennyhalim/Capstone.git"
+    "url": "git+https://github.com/kennyhalim/capstone"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kennyhalim/Capstone"
+    "url": "https://github.com/kennyhalim/capstone"
   },
-  "homepage": "https://github.com/kennyhalim/Capstone.git#readme",
+  "homepage": "https://github.com/kennyhalim/capstone#readme",
   "dependencies": {
+    "firebase": "^3.0.0",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
@@ -27,7 +28,7 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.0.0",
     "redux": "^3.7.2",
-    "styled-jsx": "^3.2.1",
+    "redux-thunk": "^2.2.0",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
@@ -39,11 +40,9 @@
     "eslint": "^4.13.1",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-react": "^7.5.1",
-    "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.29.0",
     "jest": "^20.0.4",
     "react-hot-loader": "^3.0.0-beta.7",
-    "url-loader": "^0.6.2",
     "webpack": "^3.4.0",
     "webpack-dev-server": "^2.5.0"
   }
