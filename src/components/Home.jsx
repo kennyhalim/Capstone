@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div id="home">
@@ -21,7 +22,9 @@ export default function Home() {
       `}</style>
       <Navbar />
       <div id="asd">
-        <button className="shop">Shop Now!</button>
+        <Link to="/browse">
+          <button className="shop">Shop Now!</button>
+        </Link>
       </div>
     </div>
   );

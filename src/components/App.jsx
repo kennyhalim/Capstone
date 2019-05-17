@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Switch, Route, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Home from "./Home";
+import Browse from "./Browse";
+import SignIn from "./SignIn";
 import Error404 from "./Error404";
 
 class App extends React.Component {
@@ -21,6 +23,8 @@ class App extends React.Component {
         `}</style>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/browse" component={Browse} />
+          <Route exact path="/signin" component={SignIn} />
           <Route component={Error404} />
         </Switch>
       </div>
