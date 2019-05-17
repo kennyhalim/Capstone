@@ -4,6 +4,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Home from "./Home";
 import Browse from "./Browse";
+import AboutUs from "./AboutUs";
 import SignIn from "./SignIn";
 import Error404 from "./Error404";
 
@@ -25,6 +26,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/browse" component={Browse} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/aboutus" component={AboutUs} />
           <Route component={Error404} />
         </Switch>
       </div>
