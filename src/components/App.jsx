@@ -7,6 +7,7 @@ import Browse from "./Browse";
 import AboutUs from "./AboutUs";
 import SignIn from "./SignIn";
 import Error404 from "./Error404";
+import Cart from "./Cart";
 
 class App extends React.Component {
   render() {
@@ -27,6 +28,7 @@ class App extends React.Component {
           <Route exact path="/browse" component={Browse} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/aboutus" component={AboutUs} />
+          <Route exact path="/cart" component={Cart} />
           <Route component={Error404} />
         </Switch>
       </div>

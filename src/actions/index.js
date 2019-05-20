@@ -44,3 +44,13 @@ export const addToCart = (itemInfo, userId) => {
     admin.push({ userId: userId, item: itemInfo });
   };
 };
+
+export function watchFirebaseCartRef() {
+  return function(dispatch) {
+    const currentUser = firebase.database().ref("users/1/cart");
+
+    currentUser.on("child_added", data => {
+      console.log(data.val());
+    });
+  };
+}
