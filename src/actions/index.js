@@ -37,7 +37,10 @@ export const addToCart = (itemInfo, userId) => {
   return () => {
     console.log(userId);
     console.log(itemInfo);
-    const currentUser = firebase.database().ref("users/" + userId);
-    currentUser.push(itemInfo);
+    const currentUser = firebase.database().ref("users/" + userId + "/cart");
+    const admin = firebase.database().ref("admin/orders");
+
+    currentUser.push({ item: itemInfo });
+    admin.push({ userId: userId, item: itemInfo });
   };
 };
