@@ -1,11 +1,13 @@
 const initState = {
   authError: null,
   authenticated: false,
-  user: null
+  user: null,
+  itemInCart: []
 };
 
 const authReducer = (state = initState, action) => {
   let newState;
+  let newArray;
   switch (action.type) {
     case "LOGIN_ERROR":
       newState = Object.assign({}, state, { authError: "error" });
@@ -23,9 +25,12 @@ const authReducer = (state = initState, action) => {
         user: null
       });
       return newState;
-    case "RECEIVE_TICKET":
-      newState = Object.assign({}, state);
-      newState[action.item.id] = action.item;
+    case "RECEIVE_ITEM":
+      newArray = state.itemInCart;
+      newArray.push(action.item);
+      newState = Object.assign({}, state, {
+        itemInCart: newArray
+      });
       return newState;
     default:
       return state;

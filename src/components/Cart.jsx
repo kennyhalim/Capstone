@@ -23,6 +23,10 @@ export class Cart extends Component {
       return (
         <div>
           <Navbar />
+          {Object.keys(this.props.stateAuth.itemInCart).map(itemId => {
+            let item = this.props.stateAuth.itemInCart[itemId];
+            return <p>{item.item}</p>;
+          })}
         </div>
       );
     } else {
@@ -38,8 +42,10 @@ export class Cart extends Component {
 
 const mapStateToProps = state => {
   return {
+    stateAuth: state.auth,
     authenticated: state.auth.authenticated,
-    user: state.auth.user
+    user: state.auth.user,
+    itemInCart: state.auth.itemInCart
   };
 };
 
