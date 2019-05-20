@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Navbar from "./Navbar";
@@ -31,116 +31,122 @@ class SignIn extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <style jsx>
-          {`
-            .center {
-              display: flex;
-              justify-content: space-around;
-            }
-            .bookingForm {
-              border: 1px solid #515151;
-              background-color: white;
-              width: 400px;
-              height: 380px;
-              border-radius: 5px;
-              margin-top: 7%;
-              padding: 25px 25px 0px 25px;
-            }
+    console.log(this.props.authenticated);
+    if (this.props.authenticated === false) {
+      return (
+        <div>
+          <style jsx>
+            {`
+              .center {
+                display: flex;
+                justify-content: space-around;
+              }
+              .bookingForm {
+                border: 1px solid #515151;
+                background-color: white;
+                width: 400px;
+                height: 380px;
+                border-radius: 5px;
+                margin-top: 7%;
+                padding: 25px 25px 0px 25px;
+              }
 
-            .bookingForm h1 {
-              color: #484848;
-            }
+              .bookingForm h1 {
+                color: #484848;
+              }
 
-            label {
-              font-size: 12px;
-              font-weight: bold;
-            }
+              label {
+                font-size: 12px;
+                font-weight: bold;
+              }
 
-            .alignCenter {
-              text-align: center;
-            }
-            .input {
-              height: 48px;
-              width: 377px;
-              font-size: 18px;
-              padding: 0px 10px 0px 10px;
-              margin-top: 5px;
-            }
+              .alignCenter {
+                text-align: center;
+              }
+              .input {
+                height: 48px;
+                width: 377px;
+                font-size: 18px;
+                padding: 0px 10px 0px 10px;
+                margin-top: 5px;
+              }
 
-            .submitBtn {
-              height: 48px;
-              width: 100px;
-              border-radius: 5px;
-              background: #ff5a5f;
-              color: white;
-              font-size: 15px;
-              font-weight: bold;
-            }
+              .submitBtn {
+                height: 48px;
+                width: 100px;
+                border-radius: 5px;
+                background: #ff5a5f;
+                color: white;
+                font-size: 15px;
+                font-weight: bold;
+              }
 
-            .submitBtn:hover {
-              cursor: pointer;
-            }
+              .submitBtn:hover {
+                cursor: pointer;
+              }
 
-            .btnContainer {
-              display: flex;
-              justify-content: flex-end;
-              margin-top: 20px;
-            }
-          `}
-        </style>
-        <Navbar />
-        <div className="center">
-          <form className="bookingForm" onSubmit={this.handleSubmit}>
-            <div className="alignCenter">
-              <h1>Login</h1>
-            </div>
-            <label>Email </label>
-            <br />
-            <input
-              className="input"
-              id="email"
-              type="email"
-              placeholder="Email"
-              required
-              onChange={this.handleChange}
-            />
-            <br />
-            <br />
-            <label>Password</label>
-            <br />
-            <input
-              className="input"
-              id="password"
-              type="password"
-              placeholder="Password"
-              required
-              onChange={this.handleChange}
-            />
-            <p>
-              Don't have an account? <Link to="/signup">Sign up!</Link>
-            </p>
-            <div className="btnContainer">
-              <button className="submitBtn" type="submit">
-                Log in
-              </button>
-              {this.props.authError ? <p>{this.props.authError}</p> : null}
-            </div>
-          </form>
+              .btnContainer {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 20px;
+              }
+            `}
+          </style>
+          <Navbar />
+          <div className="center">
+            <form className="bookingForm" onSubmit={this.handleSubmit}>
+              <div className="alignCenter">
+                <h1>Login</h1>
+              </div>
+              <label>Email </label>
+              <br />
+              <input
+                className="input"
+                id="email"
+                type="email"
+                placeholder="Email"
+                required
+                onChange={this.handleChange}
+              />
+              <br />
+              <br />
+              <label>Password</label>
+              <br />
+              <input
+                className="input"
+                id="password"
+                type="password"
+                placeholder="Password"
+                required
+                onChange={this.handleChange}
+              />
+              <p>
+                Don't have an account? <Link to="/signup">Sign up!</Link>
+              </p>
+              <div className="btnContainer">
+                <button className="submitBtn" type="submit">
+                  Log in
+                </button>
+                {this.props.authError ? <p>{this.props.authError}</p> : null}
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <Redirect to="/browse" />;
+    }
   }
 }
 
 SignIn.propTypes = {
-  authError: PropTypes.object
+  authError: PropTypes.string
 };
 
 const mapStateToProps = state => {
   return {
-    authError: state.auth.authError
+    authError: state.auth.authError,
+    authenticated: state.auth.authenticated
   };
 };
 const mapDispatchToProps = dispatch => {

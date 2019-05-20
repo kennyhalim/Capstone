@@ -1,14 +1,20 @@
 const initState = {
-  authError: null
+  authError: null,
+  authenticated: false
 };
 
 const authReducer = (state = initState, action) => {
+  let newState;
   switch (action.type) {
     case "LOGIN_ERROR":
-      let newState = Object.assign({}, state, { authError: "error" });
+      newState = Object.assign({}, state, { authError: "error" });
       return newState;
     case "LOGIN_SUCCESS":
-      return state;
+      newState = Object.assign({}, state, {
+        authError: null,
+        authenticated: true
+      });
+      return newState;
     default:
       return state;
   }
