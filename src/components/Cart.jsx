@@ -12,8 +12,10 @@ export class Cart extends Component {
     this.state = {};
   }
 
-  componentWillMount() {
-    this.props.watchFirebaseCartRef(this.props.user);
+  componentDidMount() {
+    if (this.props.user) {
+      this.props.watchFirebaseCartRef(this.props.user);
+    }
   }
 
   render() {
@@ -43,7 +45,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    watchFirebaseCartRef: () => dispatch(watchFirebaseCartRef())
+    watchFirebaseCartRef: userId => dispatch(watchFirebaseCartRef(userId))
   };
 };
 

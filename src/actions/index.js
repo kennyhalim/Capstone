@@ -47,10 +47,20 @@ export const addToCart = (itemInfo, userId) => {
 
 export function watchFirebaseCartRef(userId) {
   return function(dispatch) {
-    const currentUser = firebase.database().ref("users" + userId + "/cart");
-
+    const currentUser = firebase.database().ref("users/1/cart");
     currentUser.on("child_added", data => {
       console.log(data.val());
+      const newItem = Object.assign({}, data.val(), {
+        id: data.getKey()
+      });
+      dispatch(receiveItem(newItem));
     });
+  };
+}
+
+function receiveItem(itemFromFirebase) {
+  return {
+    type: "RECEIVE_ITEM",
+    item: itemFromFirebase
   };
 }

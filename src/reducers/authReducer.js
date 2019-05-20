@@ -23,6 +23,10 @@ const authReducer = (state = initState, action) => {
         user: null
       });
       return newState;
+    case "RECEIVE_TICKET":
+      newState = Object.assign({}, state);
+      newState[action.item.id] = action.item;
+      return newState;
     default:
       return state;
   }

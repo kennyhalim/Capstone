@@ -28,12 +28,10 @@ class SignIn extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
     this.props.signIn(this.state);
   }
 
   render() {
-    console.log(this.props.user);
     if (this.props.authenticated === false) {
       return (
         <div>

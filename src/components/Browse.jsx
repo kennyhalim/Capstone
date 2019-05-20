@@ -14,7 +14,6 @@ class Browse extends Component {
     this.props.addToCart(e.target.id, this.props.user);
   }
   render() {
-    console.log(this.state);
     if (this.props.authenticated) {
       return (
         <div>
