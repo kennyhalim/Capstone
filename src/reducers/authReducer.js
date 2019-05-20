@@ -1,6 +1,7 @@
 const initState = {
   authError: null,
-  authenticated: false
+  authenticated: false,
+  user: null
 };
 
 const authReducer = (state = initState, action) => {
@@ -12,12 +13,14 @@ const authReducer = (state = initState, action) => {
     case "LOGIN_SUCCESS":
       newState = Object.assign({}, state, {
         authError: null,
-        authenticated: true
+        authenticated: true,
+        user: action.credentials.userId
       });
       return newState;
     case "SIGNOUT_SUCCESS":
       newState = Object.assign({}, state, {
-        authenticated: false
+        authenticated: false,
+        user: null
       });
       return newState;
     default:

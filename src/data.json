@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "firstName": "asdf",
+      "lastName": "asdff",
+      "cart": []
+    }
+  ],
+  "admin": []
+}

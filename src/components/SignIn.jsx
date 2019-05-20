@@ -13,7 +13,8 @@ class SignIn extends React.Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      userId: 1
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,11 +28,12 @@ class SignIn extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.state);
     this.props.signIn(this.state);
   }
 
   render() {
-    console.log(this.props.authenticated);
+    console.log(this.props.user);
     if (this.props.authenticated === false) {
       return (
         <div>
@@ -146,7 +148,8 @@ SignIn.propTypes = {
 const mapStateToProps = state => {
   return {
     authError: state.auth.authError,
-    authenticated: state.auth.authenticated
+    authenticated: state.auth.authenticated,
+    user: state.auth.user
   };
 };
 const mapDispatchToProps = dispatch => {

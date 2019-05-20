@@ -1,10 +1,9 @@
 import constants from "./../constants";
 const { firebaseConfig, c } = constants;
 import Firebase from "firebase";
-import Moment from "Moment";
 
 firebase.initializeApp(firebaseConfig);
-const tickets = firebase.database().ref("users");
+const users = firebase.database().ref("users");
 
 export const signIn = credentials => {
   console.log(credentials.email);
@@ -14,9 +13,7 @@ export const signIn = credentials => {
       .signInWithEmailAndPassword(credentials.email, credentials.password)
       .then(() => {
         console.log("success");
-        console.log("firebase");
-
-        dispatch({ type: "LOGIN_SUCCESS" });
+        dispatch({ type: "LOGIN_SUCCESS", credentials });
       })
       .catch(err => {
         console.log("error");
