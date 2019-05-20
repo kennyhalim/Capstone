@@ -24,3 +24,15 @@ export const signIn = credentials => {
       });
   };
 };
+
+export const signOut = () => {
+  return (dispatch, getState) => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        console.log("Signout success");
+        dispatch({ type: "SIGNOUT_SUCCESS" });
+      });
+  };
+};

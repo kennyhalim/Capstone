@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actions from "./../actions";
 
-export default function Navbar() {
+const { signOut } = actions;
+
+function Navbar(props) {
   return (
     <div>
       <style jsx>{`
@@ -68,6 +72,9 @@ export default function Navbar() {
               <p>Sign in</p>
             </div>
           </Link>
+          <div className="child">
+            <p onClick={props.signOut}>Sign out</p>
+          </div>
           <Link to="/cart">
             <div className="child">
               <p>Cart</p>
@@ -78,3 +85,14 @@ export default function Navbar() {
     </div>
   );
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signOut: () => dispatch(signOut())
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Navbar);

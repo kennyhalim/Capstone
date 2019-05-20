@@ -15,6 +15,11 @@ const authReducer = (state = initState, action) => {
         authenticated: true
       });
       return newState;
+    case "SIGNOUT_SUCCESS":
+      newState = Object.assign({}, state, {
+        authenticated: false
+      });
+      return newState;
     default:
       return state;
   }
