@@ -6,7 +6,6 @@ firebase.initializeApp(firebaseConfig);
 const users = firebase.database().ref("users");
 
 export const signIn = credentials => {
-  console.log(credentials.email);
   return (dispatch, getState) => {
     firebase
       .auth()
@@ -31,5 +30,14 @@ export const signOut = () => {
         console.log("Signout success");
         dispatch({ type: "SIGNOUT_SUCCESS" });
       });
+  };
+};
+
+export const addToCart = (itemInfo, userId) => {
+  return () => {
+    console.log(userId);
+    console.log(itemInfo);
+    const currentUser = firebase.database().ref("users/" + userId);
+    currentUser.push(itemInfo);
   };
 };
