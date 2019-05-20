@@ -13,15 +13,33 @@ export class Cart extends Component {
   }
 
   componentWillMount() {
-    this.props.watchFirebaseCartRef();
+    this.props.watchFirebaseCartRef(this.props.user);
   }
 
   render() {
-    return <div>asdasd</div>;
+    if (this.props.authenticated) {
+      return (
+        <div>
+          <Navbar />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Navbar />
+          please log in
+        </div>
+      );
+    }
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => {
+  return {
+    authenticated: state.auth.authenticated,
+    user: state.auth.user
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {

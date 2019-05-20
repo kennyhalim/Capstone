@@ -45,9 +45,9 @@ export const addToCart = (itemInfo, userId) => {
   };
 };
 
-export function watchFirebaseCartRef() {
+export function watchFirebaseCartRef(userId) {
   return function(dispatch) {
-    const currentUser = firebase.database().ref("users/1/cart");
+    const currentUser = firebase.database().ref("users" + userId + "/cart");
 
     currentUser.on("child_added", data => {
       console.log(data.val());
