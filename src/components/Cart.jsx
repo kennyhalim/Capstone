@@ -4,13 +4,18 @@ import { connect } from "react-redux";
 import * as actions from "./../actions";
 const { watchFirebaseCartRef } = actions;
 import Navbar from "./Navbar";
+const { deleteAllInCart } = actions;
 
 export class Cart extends Component {
   constructor(props) {
     super(props);
 
     this.state = {};
+    //this.handleClearCart = this.handleClearCart.bind(this);
   }
+  // handleClearCart(e) {
+  //   this.props.deleteAllInCart(this.props.user);
+  // }
 
   componentDidMount() {
     if (this.props.user) {
@@ -29,6 +34,7 @@ export class Cart extends Component {
             console.log(item);
             return <p>{item.item}</p>;
           })}
+          <button onClick={this.handleClearCart}>Clear Cart</button>
         </div>
       );
     } else {
@@ -56,7 +62,6 @@ const mapDispatchToProps = dispatch => {
     watchFirebaseCartRef: userId => dispatch(watchFirebaseCartRef(userId))
   };
 };
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps
