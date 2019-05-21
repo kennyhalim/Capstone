@@ -19,12 +19,14 @@ export class Cart extends Component {
   }
 
   render() {
+    console.log(this.props.itemState);
     if (this.props.authenticated) {
       return (
         <div>
           <Navbar />
-          {Object.keys(this.props.stateAuth.itemInCart).map(itemId => {
-            let item = this.props.stateAuth.itemInCart[itemId];
+          {Object.keys(this.props.itemState).map(itemId => {
+            let item = this.props.itemState[itemId];
+            console.log(item);
             return <p>{item.item}</p>;
           })}
         </div>
@@ -45,7 +47,7 @@ const mapStateToProps = state => {
     stateAuth: state.auth,
     authenticated: state.auth.authenticated,
     user: state.auth.user,
-    itemInCart: state.auth.itemInCart
+    itemState: state.item
   };
 };
 

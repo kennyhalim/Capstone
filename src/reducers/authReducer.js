@@ -1,8 +1,7 @@
 const initState = {
   authError: null,
   authenticated: false,
-  user: null,
-  itemInCart: []
+  user: null
 };
 
 const authReducer = (state = initState, action) => {
@@ -26,11 +25,8 @@ const authReducer = (state = initState, action) => {
       });
       return newState;
     case "RECEIVE_ITEM":
-      newArray = state.itemInCart;
-      newArray.push(action.item);
-      newState = Object.assign({}, state, {
-        itemInCart: newArray
-      });
+      newState = Object.assign({}, state);
+      newState[action.item.id] = action.item;
       return newState;
     default:
       return state;
