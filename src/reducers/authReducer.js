@@ -28,6 +28,18 @@ const authReducer = (state = initState, action) => {
       newState = Object.assign({}, state);
       newState[action.item.id] = action.item;
       return newState;
+    case "SIGNUP_SUCCESS":
+      console.log("Signup success");
+      newState = Object.assign({}, state, {
+        authError: null
+      });
+      return newState;
+    case "SIGNUP_ERROR":
+      console.log("Signup error");
+      newState = Object.assign({}, state, {
+        authError: action.err.message
+      });
+      return newState;
     default:
       return state;
   }

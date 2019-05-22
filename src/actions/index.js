@@ -21,6 +21,27 @@ export const signIn = credentials => {
   };
 };
 
+export const signUp = credentials => {
+  return (dispatch, getState) => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(credentials.email, credentials.password)
+      .then(resp => {
+        console.log(resp);
+        return firebase
+          .database()
+          .ref("users/")
+          .push(credentials.userId);
+      })
+      .then(() => {
+        dispatch({ type: "SIGNUP_SUCCESS" });
+      })
+      .catch(err => {
+        dispatch({ type: "SIGNUP_ERROR", err });
+      });
+  };
+};
+
 export const signOut = () => {
   return (dispatch, getState) => {
     firebase

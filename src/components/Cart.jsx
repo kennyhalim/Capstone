@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "./../actions";
 const { watchFirebaseCartRef } = actions;
@@ -80,8 +81,22 @@ export class Cart extends Component {
     } else {
       return (
         <div>
+          <style jsx>
+            {`
+              .notLoggedIn {
+                height: 90vh;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+              }
+            `}
+          </style>
           <Navbar />
-          please log in
+          <div className="notLoggedIn">
+            <h1>
+              Please <Link to="/signin">Login</Link>
+            </h1>
+          </div>
         </div>
       );
     }
