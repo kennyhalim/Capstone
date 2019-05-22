@@ -33,20 +33,47 @@ class Browse extends Component {
             }
 
             .sidebar {
-              background: lightgreen;
+              background: gray;
               height: 100%;
+              text-align: left;
+              padding-left: 17%;
+              padding-top: 10%;
+            }
+
+            .sidebar ul,
+            .sidebar li {
+              list-style: none;
+              padding: 0;
+            }
+
+            .sidebar li {
+              font-size: 16px;
             }
 
             .content {
-              background: lightcoral;
+              background: white;
               height: 90vh;
             }
           `}</style>
           <Navbar />
           <div className="browsePage">
-            <div className="sidebar">asd</div>
+            <div className="sidebar">
+              <h4>All Items</h4>
+              <ul>
+                <h4>Computers</h4>
+              </ul>
+              <li>Laptops</li>
+              <li>Desktop</li>
+              <li>Mac</li>
+              <ul>
+                <h4>Smartphones</h4>
+              </ul>
+              <li>Apple</li>
+              <li>Samsung</li>
+              <li>Google</li>
+            </div>
             <div className="content">
-              <a id="item1" onClick={this.handleAddToCart}>
+              <a id="Macbook Pro" onClick={this.handleAddToCart}>
                 asdad
               </a>
             </div>

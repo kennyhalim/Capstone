@@ -4,37 +4,77 @@ import { connect } from "react-redux";
 import * as actions from "./../actions";
 const { watchFirebaseCartRef } = actions;
 import Navbar from "./Navbar";
-const { deleteAllInCart } = actions;
+const { deleteItem } = actions;
 
 export class Cart extends Component {
   constructor(props) {
     super(props);
 
     this.state = {};
-    //this.handleClearCart = this.handleClearCart.bind(this);
+    this.handleDeleteItem = this.handleDeleteItem.bind(this);
   }
-  // handleClearCart(e) {
-  //   this.props.deleteAllInCart(this.props.user);
-  // }
+  handleDeleteItem(itemId) {
+    this.props.deleteItem(itemId, this.props.user);
+  }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.user) {
       this.props.watchFirebaseCartRef(this.props.user);
     }
   }
 
   render() {
-    console.log(this.props.itemState);
     if (this.props.authenticated) {
       return (
         <div>
+          <style jsx>{`
+            .cartTable {
+              display: flex;
+              justify-content: space-around;
+              margin-top: 7vh;
+            }
+
+            table {
+              width: 60vw;
+            }
+            table,
+            th,
+            td {
+              border: 1px solid black;
+              border-collapse: collapse;
+              text-align: center;
+            }
+
+            th,
+            td {
+              padding: 15px;
+            }
+          `}</style>
           <Navbar />
-          {Object.keys(this.props.itemState).map(itemId => {
-            let item = this.props.itemState[itemId];
-            console.log(item);
-            return <p>{item.item}</p>;
-          })}
-          <button onClick={this.handleClearCart}>Clear Cart</button>
+          <div className="cartTable">
+            <table>
+              <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Item Price</th>
+              </tr>
+              {Object.keys(this.props.itemState).map(itemId => {
+                let item = this.props.itemState[itemId];
+                return (
+                  <tr>
+                    <td>{item.item}</td>
+                    <td>1</td>
+                    <td>
+                      $4.99
+                      <button onClick={() => this.handleDeleteItem(itemId)}>
+                        Remove
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </table>
+          </div>
         </div>
       );
     } else {
@@ -59,7 +99,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    watchFirebaseCartRef: userId => dispatch(watchFirebaseCartRef(userId))
+    watchFirebaseCartRef: userId => dispatch(watchFirebaseCartRef(userId)),
+    deleteItem: (itemId, userId) => dispatch(deleteItem(itemId, userId))
   };
 };
 export default connect(

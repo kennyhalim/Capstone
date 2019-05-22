@@ -52,6 +52,9 @@ export function watchFirebaseCartRef(userId) {
       });
       dispatch(receiveItem(newItem));
     });
+    currentUser.on("child_removed", data => {
+      dispatch(receiveDeletedEvent(data.getKey()));
+    });
   };
 }
 
@@ -60,4 +63,21 @@ function receiveItem(itemFromFirebase) {
     type: "RECEIVE_ITEM",
     item: itemFromFirebase
   };
+}
+
+function receiveDeletedEvent(itemFromFirebase) {
+  return {
+    type: "RECEIVE_DELETED_ITEM",
+    itemId: itemFromFirebase
+  };
+}
+
+export function deleteItem(itemId, userId) {
+  /*eslint-disable */
+  const itemToDelete = firebase
+    .database()
+    .ref("users/" + userId + "/cart/" + itemId);
+
+  /*eslint-enable */
+  return () => itemToDelete.remove();
 }
