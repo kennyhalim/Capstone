@@ -97,6 +97,12 @@ function Navbar(props) {
     return (
       <div>
         <style jsx>{`
+          img {
+            margin-left: 10px;
+            margin-top: 5px;
+            height: 40px;
+            width: 30px;
+          }
           .navbar {
             background: #515151;
             height: 10vh;
@@ -138,7 +144,11 @@ function Navbar(props) {
           }
         `}</style>
         <div className="navbar">
-          <div className="logo">asd</div>
+          <div className="logo">
+            <Link style={{ textDecoration: "none" }} to="/">
+              <img src={Logo} />
+            </Link>
+          </div>
           <div className="rightSide">
             <Link to="/">
               <div className="child">
